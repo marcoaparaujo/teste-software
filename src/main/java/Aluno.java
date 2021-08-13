@@ -1,10 +1,19 @@
 public class Aluno {
 
+    private String nome;
     private float frequencia;
     private float p1;
     private float p2;
     private float provaFinal;
     private float segundaEpoca;
+
+    public String getNome() {
+        return this.nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
     public float getFrequencia() {
         return this.frequencia;
