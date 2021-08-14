@@ -1,8 +1,11 @@
+import com.sun.codemodel.internal.JCatchBlock;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class AlunoTest {
+
 
     @Test
     void deveReprovarAlunoPorInfrequencia() {
@@ -76,6 +79,29 @@ class AlunoTest {
         aluno.setSegundaEpoca(6.0f);
 
         assertTrue(aluno.verificarAprovacao());
+    }
+
+
+    @Test
+    void deveRetornarNomeCurso() {
+        Aluno aluno = new Aluno();
+        Curso curso = new Curso();
+        curso.setNome("Engenharia de Software");
+        aluno.setCurso(curso);
+
+        assertEquals("Engenharia de Software", aluno.getNomeCurso());
+    }
+
+    @Test
+    void deveRetornarExececaoAlunoSemCurso() {
+        try {
+            Aluno aluno = new Aluno();
+            aluno.getNomeCurso();
+            fail();
+        }
+        catch (NullPointerException e) {
+            assertEquals("Aluno sem curso", e.getMessage());
+        }
     }
 
 }

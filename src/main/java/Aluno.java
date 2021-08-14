@@ -6,6 +6,7 @@ public class Aluno {
     private float p2;
     private float provaFinal;
     private float segundaEpoca;
+    private Curso curso;
 
     public String getNome() {
         return this.nome;
@@ -55,6 +56,14 @@ public class Aluno {
         this.segundaEpoca = segundaEpoca;
     }
 
+    public Curso getCurso() {
+        return this.curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
+    }
+
     public boolean verificarAprovacao() {
         if (this.frequencia < 75.0f) {
             return false;
@@ -88,6 +97,13 @@ public class Aluno {
                 }
             }
         }
+    }
+
+    public String getNomeCurso() {
+        if (this.curso == null) {
+            throw new NullPointerException("Aluno sem curso");
+        }
+        return this.curso.getNome();
     }
 }
 
