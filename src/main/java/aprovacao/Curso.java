@@ -1,3 +1,5 @@
+package aprovacao;
+
 public class Curso {
 
     private String nome;

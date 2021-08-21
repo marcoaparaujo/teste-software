@@ -1,5 +1,7 @@
-import com.sun.codemodel.internal.JCatchBlock;
-import org.junit.jupiter.api.BeforeEach;
+package aprovacao;
+
+import aprovacao.Aluno;
+import aprovacao.Curso;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -100,7 +102,7 @@ class AlunoTest {
             fail();
         }
         catch (NullPointerException e) {
-            assertEquals("Aluno sem curso", e.getMessage());
+            assertEquals("aprovacao.Aluno sem curso", e.getMessage());
         }
     }
 

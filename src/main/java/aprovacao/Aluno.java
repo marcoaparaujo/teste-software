@@ -1,3 +1,5 @@
+package aprovacao;
+
 public class Aluno {
 
     private String nome;
@@ -101,7 +103,7 @@ public class Aluno {
 
     public String getNomeCurso() {
         if (this.curso == null) {
-            throw new NullPointerException("Aluno sem curso");
+            throw new NullPointerException("aprovacao.Aluno sem curso");
         }
         return this.curso.getNome();
     }
