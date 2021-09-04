@@ -2,9 +2,29 @@ package exercRelampagoSurpresaPI;
 
 public class Pessoa {
 
+    private String nome;
+
     private Escolaridade escolaridade;
 
     private Cidade naturalidade;
+
+    public Pessoa(String nome) {
+        if ((nome == null) || (nome.trim().equals(""))) {
+            throw new NullPointerException("Nome é obrigatório");
+        }
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        if ((nome == null) || (nome.trim().equals(""))) {
+            throw new NullPointerException("Nome é obrigatório");
+        }
+        this.nome = nome;
+    }
 
     public Escolaridade getEscolaridade() {
         return escolaridade;
@@ -32,6 +52,20 @@ public class Pessoa {
     }
 
     public String getNomeEstadoNaturalidade() {
-       return this.naturalidade.getNomeEstado();
+        if (this.naturalidade == null) {
+            return "Sem naturalidade";
+        }
+        else {
+            return this.naturalidade.getNomeEstado();
+        }
+    }
+
+    public String getNomeCidadeNaturalidade() {
+        if (this.naturalidade == null) {
+            return "Sem naturalidade";
+        }
+        else {
+            return this.naturalidade.getNome();
+        }
     }
 }
