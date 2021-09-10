@@ -2,6 +2,7 @@ package exercRelampagoSurpresaPI;
 
 import org.junit.jupiter.api.Test;
 
+import static org.easymock.EasyMock.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 class AlunoTest {
@@ -63,6 +64,16 @@ class AlunoTest {
     }
 
     @Test
+    void deveRetornarNomeCoordenadorCurso() {
+        Curso curso = new Curso();
+        Aluno aluno = new Aluno("José", curso);
+        Professor professor = new Professor("Julia");
+        curso.setCoordenador(professor);
+
+        assertEquals("Julia", aluno.getNomeCoordenadorCurso());
+    }
+
+    @Test
     void deveRetornarNomeEstadoCurso() {
         Cidade cidade = new Cidade("Vassouras", new Estado("RJ"));
         Escola escola = new Escola();
@@ -75,13 +86,13 @@ class AlunoTest {
     }
 
     @Test
-    void deveRetornarNomeCoordenadorCurso() {
-        Curso curso = new Curso();
-        Aluno aluno = new Aluno("José", curso);
-        Professor professor = new Professor("Julia");
-        curso.setCoordenador(professor);
+    void deveRetornarNomeEstadoCursoMock() {
+        Curso curso = createMock(Curso.class);
+        expect(curso.getNomeEstadoEscola()).andReturn("RJ");
+        replay(curso);
+        Aluno aluno = new Aluno("Ana", curso);
 
-        assertEquals("Julia", aluno.getNomeCoordenadorCurso());
+        assertEquals("RJ", aluno.getNomeEstadoCurso());
     }
 
 }
